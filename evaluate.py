@@ -56,8 +56,8 @@ def evaluate(model, loss_fn, test_loader, params, plot_num, sample=True):
           v_batch = v.to(torch.float32).to(params.device)
           labels = labels.to(torch.float32).to(params.device)
           batch_size = test_batch.shape[1]
-          input_mu = torch.zeros(batch_size, params.test_predict_start, device=params.device) # scaled
-          input_sigma = torch.zeros(batch_size, params.test_predict_start, device=params.device) # scaled
+          input_mu = torch.zeros(batch_size, params.test_predict_start).to(params.device)
+          input_sigma = torch.zeros(batch_size, params.test_predict_start).to(params.device)
           hidden = model.init_hidden(batch_size)
           cell = model.init_cell(batch_size)
 
